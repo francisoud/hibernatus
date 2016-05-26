@@ -3,6 +3,13 @@
   hosts: localhost
   gather_facts: true
   roles:
+
+  pre_tasks:
+    - name: Install roles from Ansible Galaxy
+      become: true
+      shell: ansible-galaxy install -r requirements.yml
+
+  roles:
    - role: geerlingguy.git
-   # - role: angstwad.docker_ubuntu
+   - role: angstwad.docker_ubuntu
 
